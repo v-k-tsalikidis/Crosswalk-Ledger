@@ -25,7 +25,6 @@ also why these candidates carry no accuracy claim of their own.
 from __future__ import annotations
 
 import json
-import re
 import sys
 from pathlib import Path
 
@@ -38,7 +37,6 @@ from crosswalk_ledger.obligations import split_all  # noqa: E402
 
 ITEMS = ROOT / "catalogues" / "items"
 REPORTS = ROOT / "reports"
-HUMAN = ROOT / "human-mappings"
 MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 
 #: How many candidates to keep per obligation. Three because that is the
@@ -65,39 +63,6 @@ def load(name: str) -> list[dict]:
     return json.loads((ITEMS / f"{name}.json").read_text(encoding="utf-8"))
 
 
-def build_csf_2() -> list[dict]:
-    """CSF 2.0 subcategories and their text.
-
-    Taken from the OLIR submission spreadsheet, which carries the focal
-    document's own descriptions. The CSF text is NIST's and free to reuse; it
-    is the ISO column of that same file that cannot be redistributed, and it
-    is empty here in any case.
-    """
-    from openpyxl import load_workbook
-
-    book = load_workbook(HUMAN / "razilio-csf2.0-to-iso27001.xlsx", read_only=True, data_only=True)
-    sheet = book[book.sheetnames[0]]
-    items: dict[str, dict] = {}
-    for row in sheet.iter_rows(values_only=True):
-        cells = ["" if c is None else str(c).strip() for c in row]
-        if len(cells) < 2 or not re.fullmatch(r"[A-Z]{2}\.[A-Z]{2}-\d{2}", cells[0]):
-            continue
-        if cells[1]:
-            items[cells[0]] = {
-                "id": cells[0],
-                "title": cells[0],
-                "text": cells[1],
-                "group": cells[0].split(".")[0],
-            }
-    book.close()
-    assert len(items) == 106, f"CSF 2.0 holds 106 subcategories, parsed {len(items)}"
-    ordered = sorted(items.values(), key=lambda i: i["id"])
-    (ITEMS / "nist-csf-2.0.json").write_text(
-        json.dumps(ordered, ensure_ascii=False, indent=1) + "\n", encoding="utf-8"
-    )
-    return ordered
-
-
 def encode(texts: list[str]) -> np.ndarray:
     from sentence_transformers import SentenceTransformer
 
@@ -109,7 +74,6 @@ def main() -> int:
     obligations = split_all(load("dora"))
     print(f"DORA obligations: {len(obligations)}")
 
-    build_csf_2()
     catalogues = {name: load(name) for name in TARGETS}
     for name, items in catalogues.items():
         print(f"  {name}: {len(items)} candidates")

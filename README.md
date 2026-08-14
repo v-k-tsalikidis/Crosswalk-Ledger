@@ -97,6 +97,12 @@ Fuller version in [DISCLAIMER.md](DISCLAIMER.md).
 | `reports/` | the three results as JSON |
 | `sources.lock.json` | every source with its publisher, licence, SHA-256 and retrieval date |
 
+Every byte of framework text comes from the body that publishes it. An earlier
+draft took the CSF 2.0 subcategory text from a practitioner's spreadsheet that
+carried no licence; NIST publishes the same text itself, and the two agree on
+all 106 subcategories character for character, so the dependency was dropped
+rather than relied on.
+
 ## Reproducing it
 
 The catalogues are committed, so the measurements and the whole test suite run
@@ -116,11 +122,6 @@ downloads:
 ```bash
 python3 scripts/fetch_sources.py && python3 scripts/build_catalogues.py
 ```
-
-One further file is not redistributed here: the spreadsheet Razil published
-with their own version of the CSF 2.0 to ISO 27001 mapping. They shared it
-publicly and invited its use, but it carries no licence, so it is not committed.
-Only `build_dora_candidates.py` reads it, and only for CSF 2.0 subcategory text.
 
 Two files must be fetched by hand from the
 [NIST OLIR catalogue](https://csrc.nist.gov/projects/olir/informative-reference-catalog),

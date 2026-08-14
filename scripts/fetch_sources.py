@@ -99,6 +99,17 @@ SOURCES: tuple[Source, ...] = (
         licence="US Government work, not subject to copyright in the United States.",
     ),
     Source(
+        key="csf-2.0-core.xlsx",
+        # The CSF 2.0 Reference Tool export. The path says json and the bytes
+        # are OOXML; NIST serves a spreadsheet from that endpoint. Fetched so
+        # the CSF 2.0 text comes from NIST rather than from a third party's
+        # copy of it.
+        url="https://csrc.nist.gov/extensions/nudp/services/json/csf/download?olirids=all",
+        publisher="NIST",
+        what="CSF 2.0 core: functions, categories, subcategories and their text.",
+        licence="US Government work, not subject to copyright in the United States.",
+    ),
+    Source(
         key="d3fend.json",
         url="https://d3fend.mitre.org/ontologies/d3fend.json",
         publisher="MITRE",

@@ -241,6 +241,49 @@ def build_csf_and_pairs() -> tuple[list[dict], list[dict]]:
     ]
 
 
+_CSF2 = re.compile(r"^([A-Z]{2}\.[A-Z]{2}-\d{2}):\s*(.+)$", re.S)
+
+
+def build_csf_2() -> list[dict]:
+    """CSF 2.0 subcategories, from NIST's own Reference Tool export.
+
+    Earlier drafts took this text from a third party's spreadsheet, which
+    carried no licence. NIST publishes it directly, and the two agree on all
+    106 subcategories character for character — so the only thing lost by
+    switching is a dependency on somebody else's file.
+
+    **79 of the 185 identifiers in the export are withdrawn**, carrying
+    `[Withdrawn: Incorporated into ID.AM-03]` where their text should be. Same
+    tombstone pattern as 800-53, same treatment: recorded as absent rather
+    than offered as candidates with a sentence about their own withdrawal as
+    the text to match on.
+    """
+    rows = _xlsx_rows(CACHE / "csf-2.0-core.xlsx", "CSF 2.0")
+
+    items: list[dict] = []
+    withdrawn: list[str] = []
+    for row in rows:
+        match = _CSF2.match(row[2] if len(row) > 2 else "")
+        if not match:
+            continue
+        identifier, text = match.group(1), normalise_text(match.group(2))
+        if text.startswith("[Withdrawn"):
+            withdrawn.append(identifier)
+            continue
+        items.append(
+            {
+                "id": identifier,
+                "title": identifier,
+                "text": text,
+                "group": identifier.split(".")[0],
+            }
+        )
+
+    assert len(items) == 106, f"CSF 2.0 holds 106 live subcategories, found {len(items)}"
+    assert len(withdrawn) == 79, f"expected 79 withdrawn subcategories, found {len(withdrawn)}"
+    return sorted(items, key=lambda i: i["id"])
+
+
 def build_d3fend() -> tuple[list[dict], list[dict]]:
     """D3FEND defensive techniques, and their mapping to 800-53 controls."""
     graph = json.loads((CACHE / "d3fend.json").read_text(encoding="utf-8"))["@graph"]
@@ -414,6 +457,7 @@ def main() -> int:
     write(ITEMS, "nist-800-53", controls)
     csf, csf_pairs = build_csf_and_pairs()
     write(ITEMS, "nist-csf-1.1", csf)
+    write(ITEMS, "nist-csf-2.0", build_csf_2())
     d3fend, d3f_pairs = build_d3fend()
     write(ITEMS, "d3fend", d3fend)
     dora = build_dora()
