@@ -14,3 +14,7 @@ venv/
 # Word leaves these behind while a document is open.
 ~$*
 
+
+# Razil's spreadsheet. Nothing reads it any more — the CSF 2.0 text now comes
+# from NIST — and it carries no licence, so it stays out of the repository.
+human-mappings/razilio-csf2.0-to-iso27001.xlsx
