@@ -1,0 +1,21 @@
+.cache/
+__pycache__/
+*.py[cod]
+build/
+dist/
+*.egg-info/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+.DS_Store
+
+# Word leaves these behind while a document is open.
+~$*
+
+# Razil's own spreadsheet, shared publicly on LinkedIn but carrying no licence,
+# so not redistributed here. Only scripts/build_dora_candidates.py reads it, and
+# only for the CSF 2.0 text, which is NIST's and free. The agreement measurement
+# and every test use the NIST OLIR CSV exports instead.
+human-mappings/razilio-csf2.0-to-iso27001.xlsx

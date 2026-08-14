@@ -1,0 +1,207 @@
+{
+ "pair": "NIST CSF 2.0 → ISO/IEC 27001:2022, Annex A controls only",
+ "sources": [
+  {
+   "creator": "Razilio",
+   "file": "olir-csf2.0-to-iso27001--razilio.csv"
+  },
+  {
+   "creator": "Independent",
+   "file": "olir-csf2.0-to-iso27001--independent.csv"
+  }
+ ],
+ "subcategories_total": 106,
+ "answered": {
+  "Razilio": 97,
+  "Independent": 39
+ },
+ "compared": 37,
+ "pairs": {
+  "Razilio": 134,
+  "Independent": 90,
+  "identical": 36
+ },
+ "exact_agreement_jaccard": 0.1915,
+ "loose_agreement_share_one": 0.5946,
+ "density": {
+  "Razilio": 2.52,
+  "Independent": 2.38
+ },
+ "elements_with_no_overlap": [
+  {
+   "element": "DE.CM-01",
+   "Razilio": [
+    "8.16"
+   ],
+   "Independent": [
+    "8.15"
+   ]
+  },
+  {
+   "element": "DE.CM-09",
+   "Razilio": [
+    "8.16"
+   ],
+   "Independent": [
+    "8.6"
+   ]
+  },
+  {
+   "element": "GV.OC-05",
+   "Razilio": [
+    "5.3"
+   ],
+   "Independent": [
+    "5.8"
+   ]
+  },
+  {
+   "element": "GV.OV-01",
+   "Razilio": [
+    "5.1",
+    "5.19"
+   ],
+   "Independent": [
+    "5.24",
+    "5.5",
+    "5.6"
+   ]
+  },
+  {
+   "element": "GV.OV-02",
+   "Razilio": [
+    "5.1",
+    "5.19"
+   ],
+   "Independent": [
+    "5.27",
+    "5.35",
+    "5.36"
+   ]
+  },
+  {
+   "element": "GV.OV-03",
+   "Razilio": [
+    "5.1",
+    "5.19",
+    "5.20"
+   ],
+   "Independent": [
+    "8.30",
+    "8.32",
+    "8.34"
+   ]
+  },
+  {
+   "element": "GV.PO-02",
+   "Razilio": [
+    "5.1"
+   ],
+   "Independent": [
+    "5.31",
+    "5.32",
+    "5.34"
+   ]
+  },
+  {
+   "element": "GV.SC-07",
+   "Razilio": [
+    "5.19",
+    "5.20",
+    "5.31"
+   ],
+   "Independent": [
+    "5.22"
+   ]
+  },
+  {
+   "element": "ID.AM-08",
+   "Razilio": [
+    "5.12",
+    "5.13",
+    "5.19",
+    "5.22",
+    "5.8",
+    "5.9",
+    "7.10",
+    "7.13",
+    "7.14"
+   ],
+   "Independent": [
+    "5.11"
+   ]
+  },
+  {
+   "element": "PR.AA-01",
+   "Razilio": [
+    "5.15",
+    "5.18",
+    "8.2",
+    "8.5"
+   ],
+   "Independent": [
+    "5.16"
+   ]
+  },
+  {
+   "element": "PR.DS-10",
+   "Razilio": [
+    "5.10",
+    "5.13",
+    "5.14",
+    "5.15",
+    "5.3",
+    "6.1",
+    "6.2",
+    "6.5",
+    "8.17",
+    "8.2",
+    "8.22",
+    "8.26",
+    "8.3",
+    "8.4"
+   ],
+   "Independent": [
+    "5.23"
+   ]
+  },
+  {
+   "element": "PR.PS-02",
+   "Razilio": [
+    "5.9"
+   ],
+   "Independent": [
+    "8.7"
+   ]
+  },
+  {
+   "element": "PR.PS-03",
+   "Razilio": [
+    "5.9"
+   ],
+   "Independent": [
+    "8.1"
+   ]
+  },
+  {
+   "element": "RC.RP-01",
+   "Razilio": [
+    "5.26"
+   ],
+   "Independent": [
+    "5.29"
+   ]
+  },
+  {
+   "element": "RC.RP-02",
+   "Razilio": [
+    "5.26"
+   ],
+   "Independent": [
+    "5.30"
+   ]
+  }
+ ],
+ "is_ground_truth": false,
+ "note": "Neither mapping is correct. Both are published by NIST through OLIR as informative references. The figures measure how far two expert judgements of the same question land from each other."
+}

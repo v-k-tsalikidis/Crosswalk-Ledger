@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "crosswalk-ledger"
+version = "0.1.0"
+description = "How much do published crosswalks between security frameworks actually agree, and can a machine reproduce one"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Vasileios Tsalikidis" }]
+
+# Unlike the other tools in this family this one is a measurement, and it
+# needs the libraries the measurement is made with. They are pinned to lower
+# bounds only: a newer scikit-learn changes no published figure here, but a
+# different embedding model would, and that is pinned in the code instead.
+dependencies = [
+  "numpy>=1.26",
+  "scikit-learn>=1.4",
+  "openpyxl>=3.1",
+]
+
+[project.optional-dependencies]
+# The embedding half. Separated because the lexical baseline, the agreement
+# measurement and the whole test suite run without a 90 MB model download.
+embed = ["sentence-transformers>=2.7", "torch>=2.2"]
+dev = ["pytest>=8,<9", "ruff>=0.16", "mypy>=2.3"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "SIM", "UP", "C4", "PIE", "RET", "ISC", "DTZ", "RUF"]
+ignore = ["E501", "RUF001", "RUF002", "RUF003"]
+
+[tool.mypy]
+# 3.12 rather than the 3.10 floor the package supports: numpy's own stubs use
+# `type` statements, which mypy rejects when asked to target 3.10. The runtime
+# floor is still 3.10 and CI compiles and tests there.
+python_version = "3.12"
+files = ["src"]
+ignore_missing_imports = true
+warn_unused_ignores = true

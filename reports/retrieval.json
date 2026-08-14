@@ -1,0 +1,201 @@
+{
+ "model": null,
+ "note": "recall@k against a single human mapping. Precision is deliberately absent: the mappings are incomplete, so a proposed pair the human did not record is not necessarily wrong. Read beside reports/agreement.json, which shows two experts agreeing on 19% of the same task.",
+ "not_evaluated": {
+  "csf-2.0 ↔ iso-27001": "ISO/IEC 27001:2022 Annex A control text is copyrighted, is absent from every published export, and is not in this repository."
+ },
+ "results": [
+  {
+   "method": "random",
+   "pair": "nist-800-53 ↔ attack",
+   "direction": "nist-800-53 → attack",
+   "queried": 109,
+   "candidates": 656,
+   "recall_at": {
+    "1": 0.0642,
+    "3": 0.1284,
+    "5": 0.211,
+    "10": 0.3028,
+    "20": 0.4404
+   },
+   "pair_recall_at_10": 0.0144,
+   "median_best_rank": 27.0
+  },
+  {
+   "method": "random",
+   "pair": "nist-800-53 ↔ attack",
+   "direction": "attack → nist-800-53",
+   "queried": 469,
+   "candidates": 1014,
+   "recall_at": {
+    "1": 0.0064,
+    "3": 0.0341,
+    "5": 0.0448,
+    "10": 0.0853,
+    "20": 0.1642
+   },
+   "pair_recall_at_10": 0.008,
+   "median_best_rank": 70.0
+  },
+  {
+   "method": "lexical",
+   "pair": "nist-800-53 ↔ attack",
+   "direction": "nist-800-53 → attack",
+   "queried": 109,
+   "candidates": 656,
+   "recall_at": {
+    "1": 0.1927,
+    "3": 0.3761,
+    "5": 0.4404,
+    "10": 0.5229,
+    "20": 0.6514
+   },
+   "pair_recall_at_10": 0.0323,
+   "median_best_rank": 10.0
+  },
+  {
+   "method": "lexical",
+   "pair": "nist-800-53 ↔ attack",
+   "direction": "attack → nist-800-53",
+   "queried": 469,
+   "candidates": 1014,
+   "recall_at": {
+    "1": 0.032,
+    "3": 0.0896,
+    "5": 0.1578,
+    "10": 0.3092,
+    "20": 0.4989
+   },
+   "pair_recall_at_10": 0.0315,
+   "median_best_rank": 21.0
+  },
+  {
+   "method": "random",
+   "pair": "nist-csf-1.1 ↔ nist-800-53",
+   "direction": "nist-csf-1.1 → nist-800-53",
+   "queried": 106,
+   "candidates": 1014,
+   "recall_at": {
+    "1": 0.0094,
+    "3": 0.0094,
+    "5": 0.0189,
+    "10": 0.0283,
+    "20": 0.0943
+   },
+   "pair_recall_at_10": 0.0081,
+   "median_best_rank": 145.0
+  },
+  {
+   "method": "random",
+   "pair": "nist-csf-1.1 ↔ nist-800-53",
+   "direction": "nist-800-53 → nist-csf-1.1",
+   "queried": 188,
+   "candidates": 108,
+   "recall_at": {
+    "1": 0.0213,
+    "3": 0.0798,
+    "5": 0.1543,
+    "10": 0.2447,
+    "20": 0.3777
+   },
+   "pair_recall_at_10": 0.1111,
+   "median_best_rank": 34.5
+  },
+  {
+   "method": "lexical",
+   "pair": "nist-csf-1.1 ↔ nist-800-53",
+   "direction": "nist-csf-1.1 → nist-800-53",
+   "queried": 106,
+   "candidates": 1014,
+   "recall_at": {
+    "1": 0.1604,
+    "3": 0.3396,
+    "5": 0.434,
+    "10": 0.6038,
+    "20": 0.717
+   },
+   "pair_recall_at_10": 0.1919,
+   "median_best_rank": 6.5
+  },
+  {
+   "method": "lexical",
+   "pair": "nist-csf-1.1 ↔ nist-800-53",
+   "direction": "nist-800-53 → nist-csf-1.1",
+   "queried": 188,
+   "candidates": 108,
+   "recall_at": {
+    "1": 0.3191,
+    "3": 0.4894,
+    "5": 0.5851,
+    "10": 0.6489,
+    "20": 0.766
+   },
+   "pair_recall_at_10": 0.4283,
+   "median_best_rank": 4.0
+  },
+  {
+   "method": "random",
+   "pair": "attack ↔ d3fend",
+   "direction": "attack → d3fend",
+   "queried": 322,
+   "candidates": 272,
+   "recall_at": {
+    "1": 0.0311,
+    "3": 0.1056,
+    "5": 0.1677,
+    "10": 0.2826,
+    "20": 0.4814
+   },
+   "pair_recall_at_10": 0.0397,
+   "median_best_rank": 22.0
+  },
+  {
+   "method": "random",
+   "pair": "attack ↔ d3fend",
+   "direction": "d3fend → attack",
+   "queried": 149,
+   "candidates": 656,
+   "recall_at": {
+    "1": 0.0537,
+    "3": 0.1007,
+    "5": 0.1544,
+    "10": 0.2483,
+    "20": 0.3624
+   },
+   "pair_recall_at_10": 0.0172,
+   "median_best_rank": 45.0
+  },
+  {
+   "method": "lexical",
+   "pair": "attack ↔ d3fend",
+   "direction": "attack → d3fend",
+   "queried": 322,
+   "candidates": 272,
+   "recall_at": {
+    "1": 0.1988,
+    "3": 0.3665,
+    "5": 0.4534,
+    "10": 0.6087,
+    "20": 0.7578
+   },
+   "pair_recall_at_10": 0.1384,
+   "median_best_rank": 7.0
+  },
+  {
+   "method": "lexical",
+   "pair": "attack ↔ d3fend",
+   "direction": "d3fend → attack",
+   "queried": 149,
+   "candidates": 656,
+   "recall_at": {
+    "1": 0.2013,
+    "3": 0.3691,
+    "5": 0.4631,
+    "10": 0.5839,
+    "20": 0.7047
+   },
+   "pair_recall_at_10": 0.0615,
+   "median_best_rank": 7.0
+  }
+ ]
+}

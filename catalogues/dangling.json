@@ -1,0 +1,39 @@
+{
+ "attack__d3fend": {
+  "dropped_rows": 35,
+  "left_not_in_catalogue": [
+   "T1053.004",
+   "T1142",
+   "T1547.011",
+   "T1562.013"
+  ],
+  "right_not_in_catalogue": [],
+  "right_withdrawn_in_rev5": []
+ },
+ "d3fend__nist-800-53": {
+  "dropped_rows": 7,
+  "left_not_in_catalogue": [],
+  "right_not_in_catalogue": [
+   "au-14.2",
+   "au-15",
+   "cm-5.3",
+   "ia-2.4",
+   "ra-5.7"
+  ],
+  "right_withdrawn_in_rev5": [
+   "au-14.2",
+   "au-15",
+   "cm-5.3",
+   "ia-2.4",
+   "ra-5.7"
+  ]
+ },
+ "nist-800-53__attack": {
+  "dropped_rows": 1,
+  "left_not_in_catalogue": [],
+  "right_not_in_catalogue": [
+   "T1521.003"
+  ],
+  "right_withdrawn_in_rev5": []
+ }
+}

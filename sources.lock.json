@@ -1,0 +1,67 @@
+{
+  "sources": {
+    "attack-enterprise.json": {
+      "url": "https://raw.githubusercontent.com/mitre-attack/attack-stix-data/master/enterprise-attack/enterprise-attack-16.1.json",
+      "publisher": "MITRE",
+      "what": "ATT&CK Enterprise v16.1, STIX 2.1. Technique identifiers, names and descriptions.",
+      "licence": "© The MITRE Corporation. Reproduced and distributed with the permission of The MITRE Corporation.",
+      "sha256": "8423d8dac3fc2feb825bb07d26e5f5d905e08a88f6fe4652cc20834cbe982813",
+      "bytes": 46485155,
+      "retrieved": "2026-08-14"
+    },
+    "nist-800-53r5-catalog.json": {
+      "url": "https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json",
+      "publisher": "NIST",
+      "what": "SP 800-53 Rev 5 control catalogue, OSCAL. Control identifiers, titles and statements.",
+      "licence": "US Government work, not subject to copyright in the United States.",
+      "sha256": "01f37cf90ea99d92242c936cbfbdebcc338eef1f71454e2acac36cc56e9bc062",
+      "bytes": 10442037,
+      "retrieved": "2026-08-14"
+    },
+    "csf-pf-to-800-53r5.xlsx": {
+      "url": "https://csrc.nist.gov/files/pubs/sp/800/53/r5/upd1/final/docs/csf-pf-to-sp800-53r5-mappings.xlsx",
+      "publisher": "NIST",
+      "what": "Crosswalk from the Cybersecurity Framework and Privacy Framework to 800-53 Rev 5.",
+      "licence": "US Government work, not subject to copyright in the United States.",
+      "sha256": "8b09e8c5bd11dcfa494d2f5beec2d32d98df934285c0214712d020abefc162f1",
+      "bytes": 201644,
+      "retrieved": "2026-08-14"
+    },
+    "d3fend.json": {
+      "url": "https://d3fend.mitre.org/ontologies/d3fend.json",
+      "publisher": "MITRE",
+      "what": "D3FEND ontology. Defensive techniques and their relationships.",
+      "licence": "© The MITRE Corporation. Reproduced and distributed with the permission of The MITRE Corporation.",
+      "sha256": "db82077fffb3897387fde29006b140b1401cb6df4b5729c0496c830e099114b9",
+      "bytes": 4877739,
+      "retrieved": "2026-08-14"
+    },
+    "d3fend-full-mappings.json": {
+      "url": "https://d3fend.mitre.org/api/ontology/inference/d3fend-full-mappings.json",
+      "publisher": "MITRE",
+      "what": "D3FEND mappings out to ATT&CK and to NIST 800-53 Rev 5.",
+      "licence": "© The MITRE Corporation. Reproduced and distributed with the permission of The MITRE Corporation.",
+      "sha256": "684f0a1872868a64b9046e66111e28cb9f0dc46c08e8f044b803fd8b493260ba",
+      "bytes": 59995026,
+      "retrieved": "2026-08-14"
+    },
+    "ctid-800-53r5-to-attack.json": {
+      "url": "https://raw.githubusercontent.com/center-for-threat-informed-defense/mappings-explorer/main/mappings/nist_800_53/attack-16.1/nist_800_53-rev5/enterprise/nist_800_53-rev5_attack-16.1-enterprise.json",
+      "publisher": "MITRE Center for Threat-Informed Defense",
+      "what": "Direct mapping from 800-53 Rev 5 controls to ATT&CK Enterprise techniques.",
+      "licence": "Apache-2.0.",
+      "sha256": "355ae97d309c00eb2428e5af07754ff4ca16cfe63928194081d0e883aed929c8",
+      "bytes": 2006895,
+      "retrieved": "2026-08-14"
+    },
+    "dora.xhtml": {
+      "url": "http://publications.europa.eu/resource/celex/32022R2554",
+      "publisher": "Publications Office of the European Union",
+      "what": "Regulation (EU) 2022/2554 (DORA), full text, English.",
+      "licence": "© European Union. Reused under Decision 2011/833/EU (CC BY 4.0).",
+      "sha256": "cf50d8f023d23b2a56f535aaee0760eba7f1925ef08a9858c5c31d43d414f46b",
+      "bytes": 746866,
+      "retrieved": "2026-08-14"
+    }
+  }
+}

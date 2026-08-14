@@ -1,0 +1,517 @@
+[
+ {
+  "left": "AccountLocking",
+  "right": "ac-2.13",
+  "source": "d3fend"
+ },
+ {
+  "left": "AccountLocking",
+  "right": "ac-7.3",
+  "source": "d3fend"
+ },
+ {
+  "left": "DomainTrustPolicy",
+  "right": "ac-4.17",
+  "source": "d3fend"
+ },
+ {
+  "left": "ExecutableAllowlisting",
+  "right": "ac-3",
+  "source": "d3fend"
+ },
+ {
+  "left": "ExecutableAllowlisting",
+  "right": "cm-5",
+  "source": "d3fend"
+ },
+ {
+  "left": "ExecutableDenylisting",
+  "right": "ac-3",
+  "source": "d3fend"
+ },
+ {
+  "left": "ExecutableDenylisting",
+  "right": "cm-5",
+  "source": "d3fend"
+ },
+ {
+  "left": "ExecutionIsolation",
+  "right": "sc-3.1",
+  "source": "d3fend"
+ },
+ {
+  "left": "FileAnalysis",
+  "right": "ra-3.4",
+  "source": "d3fend"
+ },
+ {
+  "left": "FileContentRules",
+  "right": "ac-4.26",
+  "source": "d3fend"
+ },
+ {
+  "left": "FirmwareVerification",
+  "right": "si-2.6",
+  "source": "d3fend"
+ },
+ {
+  "left": "Hardware-basedProcessIsolation",
+  "right": "ac-6.4",
+  "source": "d3fend"
+ },
+ {
+  "left": "IdentifierAnalysis",
+  "right": "ra-3.4",
+  "source": "d3fend"
+ },
+ {
+  "left": "InboundTrafficFiltering",
+  "right": "ac-4",
+  "source": "d3fend"
+ },
+ {
+  "left": "InboundTrafficFiltering",
+  "right": "ac-4.1",
+  "source": "d3fend"
+ },
+ {
+  "left": "InboundTrafficFiltering",
+  "right": "ac-4.12",
+  "source": "d3fend"
+ },
+ {
+  "left": "InboundTrafficFiltering",
+  "right": "ac-4.13",
+  "source": "d3fend"
+ },
+ {
+  "left": "InboundTrafficFiltering",
+  "right": "ac-4.14",
+  "source": "d3fend"
+ },
+ {
+  "left": "InboundTrafficFiltering",
+  "right": "ac-4.15",
+  "source": "d3fend"
+ },
+ {
+  "left": "InboundTrafficFiltering",
+  "right": "ac-4.19",
+  "source": "d3fend"
+ },
+ {
+  "left": "InboundTrafficFiltering",
+  "right": "ac-4.20",
+  "source": "d3fend"
+ },
+ {
+  "left": "InboundTrafficFiltering",
+  "right": "ac-4.21",
+  "source": "d3fend"
+ },
+ {
+  "left": "InboundTrafficFiltering",
+  "right": "ac-4.28",
+  "source": "d3fend"
+ },
+ {
+  "left": "InboundTrafficFiltering",
+  "right": "ac-4.29",
+  "source": "d3fend"
+ },
+ {
+  "left": "InboundTrafficFiltering",
+  "right": "ac-4.3",
+  "source": "d3fend"
+ },
+ {
+  "left": "InboundTrafficFiltering",
+  "right": "ac-4.30",
+  "source": "d3fend"
+ },
+ {
+  "left": "InboundTrafficFiltering",
+  "right": "ac-4.32",
+  "source": "d3fend"
+ },
+ {
+  "left": "InboundTrafficFiltering",
+  "right": "ac-4.4",
+  "source": "d3fend"
+ },
+ {
+  "left": "InboundTrafficFiltering",
+  "right": "ac-4.5",
+  "source": "d3fend"
+ },
+ {
+  "left": "InboundTrafficFiltering",
+  "right": "ac-4.6",
+  "source": "d3fend"
+ },
+ {
+  "left": "InboundTrafficFiltering",
+  "right": "ac-4.8",
+  "source": "d3fend"
+ },
+ {
+  "left": "JobFunctionAccessPatternAnalysis",
+  "right": "ac-23",
+  "source": "d3fend"
+ },
+ {
+  "left": "LocalAccountMonitoring",
+  "right": "ac-23",
+  "source": "d3fend"
+ },
+ {
+  "left": "LocalAccountMonitoring",
+  "right": "au-4",
+  "source": "d3fend"
+ },
+ {
+  "left": "LocalAccountMonitoring",
+  "right": "cm-5",
+  "source": "d3fend"
+ },
+ {
+  "left": "LocalAccountMonitoring",
+  "right": "cm-5.1",
+  "source": "d3fend"
+ },
+ {
+  "left": "LocalAccountMonitoring",
+  "right": "cm-5.5",
+  "source": "d3fend"
+ },
+ {
+  "left": "LocalAccountMonitoring",
+  "right": "cm-5.6",
+  "source": "d3fend"
+ },
+ {
+  "left": "LocalAccountMonitoring",
+  "right": "ma-4.1",
+  "source": "d3fend"
+ },
+ {
+  "left": "LocalFilePermissions",
+  "right": "ac-6.10",
+  "source": "d3fend"
+ },
+ {
+  "left": "LocalFilePermissions",
+  "right": "ac-6.5",
+  "source": "d3fend"
+ },
+ {
+  "left": "LocalFilePermissions",
+  "right": "ac-6.6",
+  "source": "d3fend"
+ },
+ {
+  "left": "LocalFilePermissions",
+  "right": "sc-2.1",
+  "source": "d3fend"
+ },
+ {
+  "left": "LocalFilePermissions",
+  "right": "si-3.4",
+  "source": "d3fend"
+ },
+ {
+  "left": "MessageAnalysis",
+  "right": "ra-3.4",
+  "source": "d3fend"
+ },
+ {
+  "left": "Multi-factorAuthentication",
+  "right": "ia-2.1",
+  "source": "d3fend"
+ },
+ {
+  "left": "Multi-factorAuthentication",
+  "right": "ia-2.2",
+  "source": "d3fend"
+ },
+ {
+  "left": "Multi-factorAuthentication",
+  "right": "ia-2.6",
+  "source": "d3fend"
+ },
+ {
+  "left": "NetworkTrafficAnalysis",
+  "right": "ra-3.4",
+  "source": "d3fend"
+ },
+ {
+  "left": "NetworkTrafficAnalysis",
+  "right": "ra-5.2",
+  "source": "d3fend"
+ },
+ {
+  "left": "NetworkTrafficAnalysis",
+  "right": "ra-5.3",
+  "source": "d3fend"
+ },
+ {
+  "left": "NetworkTrafficAnalysis",
+  "right": "si-4.2",
+  "source": "d3fend"
+ },
+ {
+  "left": "NetworkTrafficAnalysis",
+  "right": "si-4.4",
+  "source": "d3fend"
+ },
+ {
+  "left": "OutboundTrafficFiltering",
+  "right": "ac-4",
+  "source": "d3fend"
+ },
+ {
+  "left": "OutboundTrafficFiltering",
+  "right": "ac-4.1",
+  "source": "d3fend"
+ },
+ {
+  "left": "OutboundTrafficFiltering",
+  "right": "ac-4.12",
+  "source": "d3fend"
+ },
+ {
+  "left": "OutboundTrafficFiltering",
+  "right": "ac-4.13",
+  "source": "d3fend"
+ },
+ {
+  "left": "OutboundTrafficFiltering",
+  "right": "ac-4.14",
+  "source": "d3fend"
+ },
+ {
+  "left": "OutboundTrafficFiltering",
+  "right": "ac-4.15",
+  "source": "d3fend"
+ },
+ {
+  "left": "OutboundTrafficFiltering",
+  "right": "ac-4.19",
+  "source": "d3fend"
+ },
+ {
+  "left": "OutboundTrafficFiltering",
+  "right": "ac-4.20",
+  "source": "d3fend"
+ },
+ {
+  "left": "OutboundTrafficFiltering",
+  "right": "ac-4.21",
+  "source": "d3fend"
+ },
+ {
+  "left": "OutboundTrafficFiltering",
+  "right": "ac-4.28",
+  "source": "d3fend"
+ },
+ {
+  "left": "OutboundTrafficFiltering",
+  "right": "ac-4.29",
+  "source": "d3fend"
+ },
+ {
+  "left": "OutboundTrafficFiltering",
+  "right": "ac-4.3",
+  "source": "d3fend"
+ },
+ {
+  "left": "OutboundTrafficFiltering",
+  "right": "ac-4.30",
+  "source": "d3fend"
+ },
+ {
+  "left": "OutboundTrafficFiltering",
+  "right": "ac-4.32",
+  "source": "d3fend"
+ },
+ {
+  "left": "OutboundTrafficFiltering",
+  "right": "ac-4.4",
+  "source": "d3fend"
+ },
+ {
+  "left": "OutboundTrafficFiltering",
+  "right": "ac-4.5",
+  "source": "d3fend"
+ },
+ {
+  "left": "OutboundTrafficFiltering",
+  "right": "ac-4.6",
+  "source": "d3fend"
+ },
+ {
+  "left": "OutboundTrafficFiltering",
+  "right": "ac-4.8",
+  "source": "d3fend"
+ },
+ {
+  "left": "PeripheralFirmwareVerification",
+  "right": "si-2.6",
+  "source": "d3fend"
+ },
+ {
+  "left": "PlatformHardening",
+  "right": "ra-5.5",
+  "source": "d3fend"
+ },
+ {
+  "left": "PlatformHardening",
+  "right": "ra-5.6",
+  "source": "d3fend"
+ },
+ {
+  "left": "PlatformMonitoring",
+  "right": "ra-3.4",
+  "source": "d3fend"
+ },
+ {
+  "left": "ProcessAnalysis",
+  "right": "ra-3.4",
+  "source": "d3fend"
+ },
+ {
+  "left": "ResourceAccessPatternAnalysis",
+  "right": "ac-23",
+  "source": "d3fend"
+ },
+ {
+  "left": "SoftwareUpdate",
+  "right": "ma-3.6",
+  "source": "d3fend"
+ },
+ {
+  "left": "SoftwareUpdate",
+  "right": "ma-6",
+  "source": "d3fend"
+ },
+ {
+  "left": "SoftwareUpdate",
+  "right": "ma-6.1",
+  "source": "d3fend"
+ },
+ {
+  "left": "SoftwareUpdate",
+  "right": "ma-6.2",
+  "source": "d3fend"
+ },
+ {
+  "left": "SoftwareUpdate",
+  "right": "ma-6.3",
+  "source": "d3fend"
+ },
+ {
+  "left": "SoftwareUpdate",
+  "right": "si-2.4",
+  "source": "d3fend"
+ },
+ {
+  "left": "SoftwareUpdate",
+  "right": "si-2.6",
+  "source": "d3fend"
+ },
+ {
+  "left": "SystemCallFiltering",
+  "right": "ac-3.8",
+  "source": "d3fend"
+ },
+ {
+  "left": "SystemConfigurationPermissions",
+  "right": "ac-6.10",
+  "source": "d3fend"
+ },
+ {
+  "left": "SystemConfigurationPermissions",
+  "right": "ac-6.5",
+  "source": "d3fend"
+ },
+ {
+  "left": "SystemConfigurationPermissions",
+  "right": "ac-6.6",
+  "source": "d3fend"
+ },
+ {
+  "left": "SystemConfigurationPermissions",
+  "right": "cm-5.5",
+  "source": "d3fend"
+ },
+ {
+  "left": "SystemConfigurationPermissions",
+  "right": "cm-5.6",
+  "source": "d3fend"
+ },
+ {
+  "left": "SystemConfigurationPermissions",
+  "right": "sc-2.1",
+  "source": "d3fend"
+ },
+ {
+  "left": "SystemConfigurationPermissions",
+  "right": "si-3.4",
+  "source": "d3fend"
+ },
+ {
+  "left": "SystemFirmwareVerification",
+  "right": "si-2.6",
+  "source": "d3fend"
+ },
+ {
+  "left": "UserAccountPermissions",
+  "right": "ac-2.7",
+  "source": "d3fend"
+ },
+ {
+  "left": "UserAccountPermissions",
+  "right": "ac-2.9",
+  "source": "d3fend"
+ },
+ {
+  "left": "UserAccountPermissions",
+  "right": "ac-24.1",
+  "source": "d3fend"
+ },
+ {
+  "left": "UserAccountPermissions",
+  "right": "ac-24.2",
+  "source": "d3fend"
+ },
+ {
+  "left": "UserAccountPermissions",
+  "right": "ma-3.3",
+  "source": "d3fend"
+ },
+ {
+  "left": "UserAccountPermissions",
+  "right": "ma-3.4",
+  "source": "d3fend"
+ },
+ {
+  "left": "UserAccountPermissions",
+  "right": "ma-3.5",
+  "source": "d3fend"
+ },
+ {
+  "left": "UserBehaviorAnalysis",
+  "right": "ra-3.4",
+  "source": "d3fend"
+ },
+ {
+  "left": "UserBehaviorAnalysis",
+  "right": "si-3.8",
+  "source": "d3fend"
+ },
+ {
+  "left": "UserDataTransferAnalysis",
+  "right": "ac-23",
+  "source": "d3fend"
+ }
+]

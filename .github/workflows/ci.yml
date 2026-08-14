@@ -1,0 +1,147 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install pinned packaging toolchain
+        run: python -m pip install --upgrade pip==26.1.2
+
+      # The embedding extra is deliberately not installed. It pulls torch, and
+      # the agreement measurement, the lexical baseline and every test run
+      # without it. A job that needs a 90 MB model to check arithmetic is a job
+      # nobody reruns.
+      - name: Install package
+        run: python -m pip install -e ".[dev]"
+
+      # Pinned to the versions the work was verified against. A pin to
+      # anything else reproduces a result nobody has seen.
+      - name: Install static analysis tools
+        run: python -m pip install ruff==0.16.2 mypy==2.3.0
+
+      - name: Lint
+        run: python -m ruff check src tests scripts
+
+      - name: Check formatting
+        run: python -m ruff format --check src tests scripts
+
+      - name: Type check
+        run: python -m mypy src
+
+      - name: Compile source, tests and scripts
+        run: python -m compileall -q src tests scripts
+
+      # The catalogues are committed, so no test touches the network. If one
+      # starts to, this job fails on a runner with no route out rather than
+      # passing quietly.
+      - name: Run tests
+        env:
+          PYTHONPATH: src
+        run: python -m pytest tests -q
+
+      # The headline number of the project. If a refactor moves it, the build
+      # stops rather than the README quietly becoming false.
+      - name: The published agreement figure still reproduces
+        run: |
+          python3 scripts/measure_agreement.py
+          python - <<'PY'
+          import json
+          got = json.load(open("reports/agreement.json"))
+          assert got["compared"] == 37, got["compared"]
+          assert got["pairs"]["identical"] == 36, got["pairs"]
+          assert abs(got["exact_agreement_jaccard"] - 0.1915) < 0.0005, got
+          assert abs(got["loose_agreement_share_one"] - 0.5946) < 0.0005, got
+          assert got["is_ground_truth"] is False
+          print("19% exact and 59% loose, as published")
+          PY
+
+      - name: The generated document matches the committed one
+        run: git diff --exit-code -- docs/AGREEMENT.md
+
+      # The lexical baseline is what decides whether embeddings earn their
+      # place, so it is checked on every push. The embedding arm is not: it
+      # needs the model, and its figures are pinned in the committed report.
+      - name: The lexical baseline still beats random
+        run: |
+          python3 scripts/evaluate_method.py
+          python - <<'PY'
+          import json
+          rows = json.load(open("reports/retrieval.json"))["results"]
+          by = {(r["method"], r["direction"]): r for r in rows}
+          checked = 0
+          for (method, direction), row in by.items():
+              if method != "lexical":
+                  continue
+              floor = by[("random", direction)]
+              assert row["recall_at"]["10"] > floor["recall_at"]["10"], direction
+              checked += 1
+          assert checked == 6, checked
+          print(f"lexical beats random on all {checked} directions")
+          PY
+
+      # Ties must be resolved against the method, or every published recall
+      # figure is inflated. This was a real defect: argsort ordered ties by
+      # catalogue position and a test caught it.
+      - name: Ties are still broken pessimistically
+        env:
+          PYTHONPATH: src
+        run: |
+          python - <<'PY'
+          import numpy as np
+          from crosswalk_ledger.retrieval import rank_positions
+          assert rank_positions(np.ones(10), [0]) == [10], "a flat vector must rank last"
+          assert rank_positions(np.array([0.9, 0.9, 0.1]), [0]) == [2]
+          print("no method is credited for a tie it did not win")
+          PY
+
+      - name: Nothing claims to be an official DORA mapping
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          path = pathlib.Path("reports/dora-candidates.json")
+          if not path.exists():
+              print("candidates not committed; nothing to check")
+              raise SystemExit(0)
+          payload = json.load(path.open())
+          rows = payload["candidates"]
+          assert rows, "no candidates"
+          assert all(r["provenance"] == "proposed" for r in rows)
+          assert "no_dora_measurement_exists" in payload
+          assert payload["human_agreement_on_a_comparable_task"]["exact"] < 0.25
+          for row in payload["composed_to_attack"]:
+              assert row["first_leg"] == "proposed"
+              assert "official" in row["second_leg"]
+          print(f"{len(rows)} candidates, every one labelled proposed")
+          PY
+
+      # ISO standards are copyrighted. Identifiers are NIST's to publish;
+      # control text is not ours to ship, and a well-meaning commit adding it
+      # would be hard to notice by eye.
+      - name: No ISO 27001 control text has crept into the repository
+        shell: bash
+        run: |
+          hits=$(grep -rInE "^\s*A?\.?[0-9]{1,2}\.[0-9]{1,2}\s+(Policies|Information security|Segregation|Screening|Terms and conditions)" \
+            --include="*.json" --include="*.csv" --include="*.md" . || true)
+          if [ -n "$hits" ]; then
+            echo "::error::what looks like ISO Annex A control text is present"
+            echo "$hits" | head -20
+            exit 1
+          fi
+          echo "identifiers only, as intended"
