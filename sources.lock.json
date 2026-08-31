@@ -27,6 +27,15 @@
       "bytes": 201644,
       "retrieved": "2026-08-14"
     },
+    "csf-2.0-core.xlsx": {
+      "url": "https://csrc.nist.gov/extensions/nudp/services/json/csf/download?olirids=all",
+      "publisher": "NIST",
+      "what": "CSF 2.0 core: functions, categories, subcategories and their text.",
+      "licence": "US Government work, not subject to copyright in the United States.",
+      "sha256": "0d75c973dac043836bde9a4b153585fa62a5f20d12f97a55e8d2d438161457b9",
+      "bytes": 144517,
+      "retrieved": "2026-08-14"
+    },
     "d3fend.json": {
       "url": "https://d3fend.mitre.org/ontologies/d3fend.json",
       "publisher": "MITRE",

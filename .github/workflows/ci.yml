@@ -83,7 +83,7 @@ jobs:
           python3 scripts/evaluate_method.py
           python - <<'PY'
           import json
-          rows = json.load(open("reports/retrieval.json"))["results"]
+          rows = json.load(open("reports/retrieval-lexical.json"))["results"]
           by = {(r["method"], r["direction"]): r for r in rows}
           checked = 0
           for (method, direction), row in by.items():

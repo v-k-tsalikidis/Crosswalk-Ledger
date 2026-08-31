@@ -135,6 +135,12 @@ def main() -> int:
 
     retrieval = json.loads((REPORTS / "retrieval.json").read_text(encoding="utf-8"))
     agreement = json.loads((REPORTS / "agreement.json").read_text(encoding="utf-8"))
+    embedding_results = [r for r in retrieval["results"] if r["method"] == "embedding"]
+    if retrieval.get("model") != MODEL or not embedding_results:
+        raise RuntimeError(
+            "reports/retrieval.json is not the full embedding report; "
+            "run `python3 scripts/evaluate_method.py --embed` first"
+        )
 
     payload = {
         "what_this_is": (
@@ -152,9 +158,7 @@ def main() -> int:
             "and describe the method, not this output."
         ),
         "method_performance_on_other_pairs": {
-            r["direction"]: r["recall_at"]
-            for r in retrieval["results"]
-            if r["method"] == "embedding"
+            r["direction"]: r["recall_at"] for r in embedding_results
         },
         "human_agreement_on_a_comparable_task": {
             "pair": agreement["pair"],

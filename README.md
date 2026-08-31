@@ -110,11 +110,15 @@ offline:
 
 ```bash
 python3 scripts/measure_agreement.py                  # step 1
-python3 scripts/evaluate_method.py                    # step 2, lexical only
+python3 scripts/evaluate_method.py                    # step 2, lexical-only report
 pip install -e ".[embed]" && \
-  python3 scripts/evaluate_method.py --embed          # step 2, full
+  python3 scripts/evaluate_method.py --embed          # step 2, full canonical report
 python3 scripts/build_dora_candidates.py              # step 3
 ```
+
+The lexical-only run writes the disposable
+`reports/retrieval-lexical.json`. The `--embed` run writes the canonical
+`reports/retrieval.json` consumed by the DORA candidate builder.
 
 Rebuilding the catalogues from source needs the network and 119 MB of
 downloads:
@@ -123,10 +127,9 @@ downloads:
 python3 scripts/fetch_sources.py && python3 scripts/build_catalogues.py
 ```
 
-Two files must be fetched by hand from the
-[NIST OLIR catalogue](https://csrc.nist.gov/projects/olir/informative-reference-catalog),
-which serves through a JavaScript application with no download endpoint.
-`scripts/fetch_sources.py --check` says which and where to put them.
+The two NIST OLIR coverage exports used for the agreement measurement are
+committed under `human-mappings/`. They contain framework and control
+identifiers, not ISO control text.
 
 ## Things that would have quietly corrupted the results
 

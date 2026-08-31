@@ -10,6 +10,7 @@ dist/
 .venv/
 venv/
 .DS_Store
+reports/retrieval-lexical.json
 
 # Word leaves these behind while a document is open.
 ~$*

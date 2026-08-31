@@ -1,5 +1,5 @@
 {
- "model": null,
+ "model": "sentence-transformers/all-MiniLM-L6-v2",
  "note": "recall@k against a single human mapping. Precision is deliberately absent: the mappings are incomplete, so a proposed pair the human did not record is not necessarily wrong. Read beside reports/agreement.json, which shows two experts agreeing on 19% of the same task.",
  "not_evaluated": {
   "csf-2.0 ↔ iso-27001": "ISO/IEC 27001:2022 Annex A control text is copyrighted, is absent from every published export, and is not in this repository."
@@ -70,6 +70,38 @@
    "median_best_rank": 21.0
   },
   {
+   "method": "embedding",
+   "pair": "nist-800-53 ↔ attack",
+   "direction": "nist-800-53 → attack",
+   "queried": 109,
+   "candidates": 656,
+   "recall_at": {
+    "1": 0.2294,
+    "3": 0.4128,
+    "5": 0.5046,
+    "10": 0.5963,
+    "20": 0.6881
+   },
+   "pair_recall_at_10": 0.0388,
+   "median_best_rank": 5.0
+  },
+  {
+   "method": "embedding",
+   "pair": "nist-800-53 ↔ attack",
+   "direction": "attack → nist-800-53",
+   "queried": 469,
+   "candidates": 1014,
+   "recall_at": {
+    "1": 0.1023,
+    "3": 0.2473,
+    "5": 0.339,
+    "10": 0.4712,
+    "20": 0.6418
+   },
+   "pair_recall_at_10": 0.054,
+   "median_best_rank": 11.0
+  },
+  {
    "method": "random",
    "pair": "nist-csf-1.1 ↔ nist-800-53",
    "direction": "nist-csf-1.1 → nist-800-53",
@@ -134,6 +166,38 @@
    "median_best_rank": 4.0
   },
   {
+   "method": "embedding",
+   "pair": "nist-csf-1.1 ↔ nist-800-53",
+   "direction": "nist-csf-1.1 → nist-800-53",
+   "queried": 106,
+   "candidates": 1014,
+   "recall_at": {
+    "1": 0.2264,
+    "3": 0.3585,
+    "5": 0.4811,
+    "10": 0.6509,
+    "20": 0.783
+   },
+   "pair_recall_at_10": 0.2242,
+   "median_best_rank": 6.0
+  },
+  {
+   "method": "embedding",
+   "pair": "nist-csf-1.1 ↔ nist-800-53",
+   "direction": "nist-800-53 → nist-csf-1.1",
+   "queried": 188,
+   "candidates": 108,
+   "recall_at": {
+    "1": 0.4309,
+    "3": 0.6277,
+    "5": 0.7074,
+    "10": 0.8085,
+    "20": 0.883
+   },
+   "pair_recall_at_10": 0.5455,
+   "median_best_rank": 2.0
+  },
+  {
    "method": "random",
    "pair": "attack ↔ d3fend",
    "direction": "attack → d3fend",
@@ -196,6 +260,38 @@
    },
    "pair_recall_at_10": 0.0615,
    "median_best_rank": 7.0
+  },
+  {
+   "method": "embedding",
+   "pair": "attack ↔ d3fend",
+   "direction": "attack → d3fend",
+   "queried": 322,
+   "candidates": 272,
+   "recall_at": {
+    "1": 0.2112,
+    "3": 0.4161,
+    "5": 0.4814,
+    "10": 0.6149,
+    "20": 0.7205
+   },
+   "pair_recall_at_10": 0.1352,
+   "median_best_rank": 6.0
+  },
+  {
+   "method": "embedding",
+   "pair": "attack ↔ d3fend",
+   "direction": "d3fend → attack",
+   "queried": 149,
+   "candidates": 656,
+   "recall_at": {
+    "1": 0.2282,
+    "3": 0.396,
+    "5": 0.4497,
+    "10": 0.5839,
+    "20": 0.7114
+   },
+   "pair_recall_at_10": 0.0615,
+   "median_best_rank": 8.0
   }
  ]
 }

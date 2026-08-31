@@ -7,8 +7,8 @@ from step 1 — cannot be run here: the Annex A control text is ISO's copyright,
 it appears in none of the published exports, and it is not in this repository.
 That gap is stated in the report rather than worked around.
 
-    python3 scripts/evaluate_method.py            # lexical and random
-    python3 scripts/evaluate_method.py --embed    # adds the embedding model
+    python3 scripts/evaluate_method.py            # lexical and random; separate report
+    python3 scripts/evaluate_method.py --embed    # full canonical report
 """
 
 from __future__ import annotations
@@ -130,6 +130,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--embed", action="store_true", help=f"also run {MODEL}")
     args = parser.parse_args()
+    report_name = "retrieval.json" if args.embed else "retrieval-lexical.json"
 
     everything: list[Result] = []
     for left, right in EVALUATED:
@@ -142,7 +143,7 @@ def main() -> int:
             print("   ", result.row())
 
     REPORTS.mkdir(exist_ok=True)
-    (REPORTS / "retrieval.json").write_text(
+    (REPORTS / report_name).write_text(
         json.dumps(
             {
                 "model": MODEL if args.embed else None,
@@ -178,7 +179,7 @@ def main() -> int:
         + "\n",
         encoding="utf-8",
     )
-    print(f"\nWrote {(REPORTS / 'retrieval.json').relative_to(ROOT)}")
+    print(f"\nWrote {(REPORTS / report_name).relative_to(ROOT)}")
     return 0
 
 

@@ -37,6 +37,17 @@ EXPECTED_PAIRS = {
     "nist-csf-1.1__nist-800-53": 495,
 }
 
+EXPECTED_LOCKED_SOURCES = {
+    "attack-enterprise.json",
+    "nist-800-53r5-catalog.json",
+    "csf-pf-to-800-53r5.xlsx",
+    "csf-2.0-core.xlsx",
+    "d3fend.json",
+    "d3fend-full-mappings.json",
+    "ctid-800-53r5-to-attack.json",
+    "dora.xhtml",
+}
+
 
 def load(folder: Path, name: str) -> list[dict]:
     return json.loads((folder / f"{name}.json").read_text(encoding="utf-8"))
@@ -64,6 +75,27 @@ class EveryCatalogueHoldsWhatItSays(unittest.TestCase):
             items = load(ITEMS, name)
             with self.subTest(catalogue=name):
                 self.assertEqual(len({i["id"] for i in items}), len(items))
+
+
+class EveryDownloadedSourceIsLocked(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sources = json.loads((ROOT / "sources.lock.json").read_text(encoding="utf-8"))[
+            "sources"
+        ]
+
+    def test_the_lock_covers_every_source_used_by_the_builder(self):
+        self.assertEqual(set(self.sources), EXPECTED_LOCKED_SOURCES)
+
+    def test_every_entry_carries_verifiable_provenance(self):
+        for name, entry in self.sources.items():
+            with self.subTest(source=name):
+                self.assertTrue(entry["url"].startswith(("https://", "http://")))
+                self.assertTrue(entry["publisher"])
+                self.assertTrue(entry["licence"])
+                self.assertEqual(len(entry["sha256"]), 64)
+                self.assertGreater(entry["bytes"], 1_024)
+                self.assertRegex(entry["retrieved"], r"^\d{4}-\d{2}-\d{2}$")
 
 
 class IdentifiersAreNormalised(unittest.TestCase):

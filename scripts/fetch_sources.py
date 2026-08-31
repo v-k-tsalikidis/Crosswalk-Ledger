@@ -9,13 +9,9 @@ fails loudly instead of quietly changing the numbers the project publishes.
 The raw files are large — ATT&CK alone is ~54 MB — so they live in a cache
 outside the repository. Only the extracted catalogues are committed.
 
-**One source is not here and cannot be.** The NIST crosswalk from 800-53 Rev 5
-to ISO/IEC 27001:2022 moved to the NIST OLIR catalogue (reference 155), which
-serves through a JavaScript application with no documented download endpoint.
-It has to be fetched by hand. That is tolerable because the ISO side was
-always going to be user-supplied: ISO standards are copyrighted and their
-control text cannot be redistributed, so this project can never ship it.
-Run with --check to see whether the manual file is in place.
+The two NIST OLIR coverage exports used for the agreement measurement are
+committed under `human-mappings/`. They contain identifiers, not ISO control
+text. No copyrighted ISO catalogue is fetched or redistributed.
 """
 
 from __future__ import annotations
@@ -150,16 +146,6 @@ SOURCES: tuple[Source, ...] = (
     ),
 )
 
-#: Fetched by hand. See the module docstring for why.
-MANUAL = {
-    "nist-800-53r5-to-iso-27001.xlsx": (
-        "NIST OLIR informative reference 155, 'Crosswalk: 800-53 Rev 5 to ISO/IEC "
-        "27001:2022'. Download from "
-        "https://csrc.nist.gov/projects/olir/informative-reference-catalog"
-        "?referenceId=155 and save it into .cache/sources/ under this name."
-    )
-}
-
 
 def fetch(source: Source, timeout: int = 120) -> bytes:
     request = urllib.request.Request(
@@ -191,20 +177,15 @@ def check() -> int:
             continue
         got = digest(source.path.read_bytes())
         known = lock.get(source.key, {}).get("sha256")
-        if known and got != known:
+        if not known:
+            print(f"  UNLOCKED  {source.key}")
+            missing += 1
+        elif got != known:
             print(f"  DRIFTED   {source.key}\n            locked {known[:16]}… got {got[:16]}…")
             missing += 1
         else:
             size = source.path.stat().st_size
             print(f"  ok        {source.key:<34} {size:>10,} bytes")
-
-    for name, how in MANUAL.items():
-        path = CACHE / name
-        if path.exists():
-            print(f"  ok        {name:<34} {path.stat().st_size:>10,} bytes  (manual)")
-        else:
-            print(f"  MANUAL    {name}\n            {how}")
-            missing += 1
 
     return 1 if missing else 0
 
@@ -229,6 +210,10 @@ def main() -> int:
 
     for source in SOURCES:
         if source.path.exists() and not args.force:
+            if source.key not in entries:
+                print(f"  FAILED    {source.key}: cached but absent from sources.lock.json")
+                failures.append(source.key)
+                continue
             print(f"  cached    {source.key}")
             continue
         print(f"  fetching  {source.key} …", end="", flush=True)
@@ -268,10 +253,6 @@ def main() -> int:
         encoding="utf-8",
     )
     print(f"\nWrote {LOCK.relative_to(ROOT)} with {len(entries)} sources.")
-
-    for name, how in MANUAL.items():
-        if not (CACHE / name).exists():
-            print(f"\nStill needed by hand: {name}\n  {how}")
 
     if failures:
         print(f"\nFAILED: {', '.join(failures)}", file=sys.stderr)
